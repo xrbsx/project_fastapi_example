@@ -4,6 +4,12 @@ from sqlmodel import Field, SQLModel
 from pamps.security import HashedPassword
 from pydantic import BaseModel
 
+# No topo do arquivo
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+  from pamps.models.post import Post
+
 class User(SQLModel, table=True):
     """Represents the User Model"""
     id: Optional[int] = Field(default=None, primary_key=True)
