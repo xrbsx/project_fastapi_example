@@ -46,3 +46,14 @@ def user_list():
       table.add_row(user.username, user.email)
 
   Console().print(table)
+
+@main.command()
+def reset_db(
+  force: bool = typer.Option(
+    False, "--force", "-f", help="Run with no confirmation"
+  )
+):
+  """Resets the database tables"""
+  force = force or typer.confirm("Are you sure?")
+  if force:
+    SQLModel.metadata.drop_all(engine)
