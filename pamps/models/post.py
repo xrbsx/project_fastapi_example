@@ -6,6 +6,8 @@ from typing import TYPE_CHECKING, Optional
 from pydantic import BaseModel, Extra
 from sqlmodel import Field, Relationship, SQLModel
 
+if TYPE_CHECKING:
+  from project_name.security import User
 
 class Post(SQLModel, table=True):
   """Represents the Post Model"""

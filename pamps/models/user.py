@@ -1,14 +1,8 @@
 """User related data models"""
-from typing import Optional
-from sqlmodel import Field, SQLModel
+from typing import List, Optional
+from sqlmodel import Field, Relationship, SQLModel
 from pamps.security import HashedPassword
 from pydantic import BaseModel
-
-# No topo do arquivo
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-  from pamps.models.post import Post
 
 class User(SQLModel, table=True):
     """Represents the User Model"""
@@ -18,6 +12,9 @@ class User(SQLModel, table=True):
     avatar: Optional[str] = None
     bio: Optional[str] = None
     password: HashedPassword
+
+    # it populates the .user attribute on the Content Model
+    posts: List["Post"] = Relationship(back_populates="user")
 
 class UserResponse(BaseModel):
     """Serializer for User Response"""

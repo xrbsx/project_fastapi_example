@@ -14,7 +14,6 @@ def api_client():
   return TestClient(app)
 
 def create_api_client_authenticated(username):
-
   try:
     create_user(f"{username}@pamps.com", username, username)
   except IntegrityError:
