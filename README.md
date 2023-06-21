@@ -97,3 +97,17 @@ tests/test_api.py::test_all_posts_from_user1_with_replies PASSED                
  ⠿ Network fastapi-lab_default  Removed                                                                                                                                      0.1s
 *[main][~/Workspace/Tecnologias/Python/fastapi-lab]$
 ```
+
+
+#### Validação
+
+- utilizar port-forward para validação de fora do cluster k8s
+```
+*[main][~/Workspace/Tecnologias/Python/fastapi-lab/k8s]$ k port-forward svc/api 8888:8000
+Forwarding from 127.0.0.1:8888 -> 8000
+Forwarding from [::1]:8888 -> 8000
+Handling connection for 8888
+Handling connection for 8888
+```
+
+![Alt text](image-2.png)
