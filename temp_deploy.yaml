@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: fastapi-lab
+  name: fastapi-lab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi-lab
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: fastapi-lab
+    spec:
+      containers:
+      - image: xrbsx/fastapi-lab-api:latest
+        name: api
+        env:
+        - name: PAMPS_DB__uri
+          value: "postgresql://postgres:postgres@db:5432/${PAMPS_DB:-pamps}"
+        - name: PAMPS_DB__connect_args
+          value: "{}"
+        ports:
+        - containerPort: 8000
+        resources: {}
+      - image: xrbsx/pamps_postgres_alpine
+        name: db
+        ports:
+        - containerPort: 5432
+        resources: {}

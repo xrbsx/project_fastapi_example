@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
+    image: xrbsx/fastapi-lab-api
     ports:
       - "8000:8000"
     environment:
@@ -18,7 +19,7 @@ services:
     tty: true
   db:
     build: postgres
-    image: pamps_postgres-13-alpine-multi-user
+    image: xrbsx/fastapi-lab-postgres
     healthcheck:
       test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "postgres" ]
       timeout: 45s
