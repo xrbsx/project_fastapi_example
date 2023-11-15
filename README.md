@@ -60,7 +60,7 @@ Para acessar o Swagger UI utilizar http://0.0.0.0:800/docs
 ![Alt text](image-1.png)
 
 
-#### CONHECENDO O APP ATRAVEZ DOS TESTES:
+#### CONHECENDO O APP ATRAVES DOS TESTES:
 
 
 Na raiz do projeto execute:
